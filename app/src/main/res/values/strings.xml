@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KotlinModule2</string>
+
+    <string name="some_text">Jetpack Compose — это современный набор инструментов для создания пользовательского интерфейса (UI) на Android, разработанный Google</string>
 </resources>
