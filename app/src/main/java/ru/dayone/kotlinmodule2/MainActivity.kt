@@ -13,7 +13,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Wallpapers
 import ru.dayone.kotlinmodule2.ui.theme.KotlinModule2Theme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             KotlinModule2Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Hello("Leonid")
+                    Hello(null)
                 }
             }
         }
@@ -38,13 +42,36 @@ fun Hello(name: String?) {
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
-            text = name?.let { "Hello, $name" } ?: "Name has been not provided"
+            text = name?.let { "Hello, $name" } ?: "Name has not been provided"
         )
     }
 }
 
 @Composable
-@Preview
-fun HelloPreview() {
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+)
+fun HelloPreviewPortrait() {
+    Hello("Leonid")
+}
+
+@Composable
+@Preview(
+    showSystemUi = true,
+    showBackground = true, device = "spec:parent=pixel_5,orientation=landscape",
+)
+fun HelloPreviewLandscape() {
+    Hello("Leonid")
+}
+
+@Composable
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    device = "spec:width=200dp,height=200dp,dpi=320,isRound=true",
+    backgroundColor = 0xffffff00,
+)
+fun HelloPreviewRound() {
     Hello("Leonid")
 }
